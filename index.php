@@ -103,7 +103,7 @@ button:hover {
   </div>
   <hr>
   <div class="elem-group">
-    <label for="mesaj">Anything Else?</label>
+    <label for="mesaj">Notunuz?</label>
     <textarea id="mesaj" name="ziyaretci_message" placeholder="Lütfen listede olmayan bir mesajınız varsa belirtin." ></textarea>
   </div>
   <button type="submit">Oda Ayırt</button>
