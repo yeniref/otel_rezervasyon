@@ -65,32 +65,32 @@ button:hover {
 <form action="rezervasyon.php" method="post">
   <div class="elem-group">
     <label for="name">Adınız</label>
-    <input type="text" id="name" name="ziyaretci_adi" placeholder="John Doe" pattern=[A-Z\sa-z]{3,20} required>
+    <input type="text" id="name" name="ziyaretci_adi" placeholder="Yeniref Harew" pattern=[A-Z\sa-z]{3,20} required>
   </div>
   <div class="elem-group">
     <label for="email">E-mail</label>
-    <input type="email" id="email" name="ziyaretci_email" placeholder="john.doe@email.com" required>
+    <input type="email" id="email" name="ziyaretci_email" placeholder="energyspor21@gmail.com" required>
   </div>
   <div class="elem-group">
     <label for="phone">Telefon</label>
-    <input type="tel" id="telefon" name="ziyaretci_phone" placeholder="498-348-3872" pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
+    <input type="tel" id="telefon" name="ziyaretci_telefon" placeholder="5516555204" required>
   </div>
   <hr>
   <div class="elem-group inlined">
     <label for="yetiskin">Yetişkin</label>
-    <input type="number" id="yetiskin" name="toplam_yetiskin" placeholder="2" min="1" required>
+    <input type="number" id="yetiskin" name="toplam_yetiskin" placeholder="2" min="1" value="1" required>
   </div>
   <div class="elem-group inlined">
     <label for="cocuk">Çocuk</label>
-    <input type="number" id="cocuk" name="toplam_cocuk" placeholder="2" min="0" required>
+    <input type="number" id="cocuk" name="toplam_cocuk" placeholder="2" min="0" value="0" required>
   </div>
   <div class="elem-group inlined">
     <label for="giris_tarih">Giriş Tarihi</label>
-    <input type="tarih" id="giris_tarih" name="giris_tarih" required>
+    <input type="date" id="giris_tarih" name="giris_tarih" required>
   </div>
   <div class="elem-group inlined">
     <label for="cikis_tarih">Çıkış Tarihi</label>
-    <input type="tarih" id="cikis_tarih" name="cikis_tarih" required>
+    <input type="date" id="cikis_tarih" name="cikis_tarih" required>
   </div>
   <div class="elem-group">
     <label for="oda_sec">Oda Tercihini Seçin</label>
@@ -104,31 +104,31 @@ button:hover {
   <hr>
   <div class="elem-group">
     <label for="mesaj">Notunuz?</label>
-    <textarea id="mesaj" name="ziyaretci_message" placeholder="Lütfen listede olmayan bir mesajınız varsa belirtin." ></textarea>
+    <textarea id="mesaj" name="ziyaretci_mesaj" placeholder="Lütfen listede olmayan bir mesajınız varsa belirtin." ></textarea>
   </div>
   <button type="submit">Oda Ayırt</button>
 </form>
 
 <script>
-var simdikizaman = new Date();
-var yil = simdikizaman.getFullYear();
-var ay = (simdikizaman.getMonth() + 1);
-var tarih = (simdikizaman.getDate() + 1);
+var currentDateTime = new Date();
+var year = currentDateTime.getFullYear();
+var month = (currentDateTime.getMonth() + 1);
+var date = (currentDateTime.getDate() + 1);
 
-if(tarih < 10) {
-  tarih = '0' + tarih;
+if(date < 10) {
+  date = '0' + date;
 }
-if(ay < 10) {
-  ay = '0' + ay;
+if(month < 10) {
+  month = '0' + month;
 }
 
-var tarih_artir = yil + "-" + ay + "-" + tarih;
-var giris_kontrol = document.querySelector("#giris_tarih");
-var cikis_kontrol = document.querySelector("#cikis_tarih");
+var dateTomorrow = year + "-" + month + "-" + date;
+var checkinElem = document.querySelector("#giris_tarih");
+var checkoutElem = document.querySelector("#cikis_tarih");
 
-giris_kontrol.setAttribute("min", tarih_artir);
+checkinElem.setAttribute("min", dateTomorrow);
 
-giris_kontrol.onchange = function () {
-    cikis_kontrol.setAttribute("min", this.value);
+checkinElem.onchange = function () {
+    checkoutElem.setAttribute("min", this.value);
 }
 </script>
